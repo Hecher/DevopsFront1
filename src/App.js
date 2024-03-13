@@ -21,6 +21,15 @@ const App = () => {
     setEditingTodo(todoToEdit);
   };
 
+  const completeTodo = (id, text) => {
+    console.log(todos.text);
+    console.log(text);
+    
+    // const element = id;
+    // element.classList.toggle("crossed-line");
+    // setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   const handleEditSave = (editedText, id) => {
     const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, text: editedText } : todo
@@ -33,7 +42,7 @@ const App = () => {
     <div className="App">
       <h1>Список задач</h1>
       <TodoForm saveTodo={saveTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} completeTodo={completeTodo} />
       {editingTodo && (
         <TodoEditForm
           todo={editingTodo}
@@ -41,6 +50,7 @@ const App = () => {
           cancelEdit={() => setEditingTodo(null)}
         />
       )}
+      
     </div>
   );
 };
